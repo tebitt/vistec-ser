@@ -1,21 +1,22 @@
 import setuptools
 
 requirements = [
-    "chardet<4.0,>=2.0",
-    "torch>=1.7.1",
-    "torchvision>=0.8.2",
-    "torchtext>=0.8.2",
-    "torchaudio>=0.7.2",
-    "pytorch-lightning>=1.2.0",
-    "pandas>=1.1.5",
-    "numpy>=1.19.2,<1.20.0",
-    "soundfile>=0.10.3",
-    "PyYAML!=5.4.*,>=5.1",
-    "wget>=3.2",
-    "fastapi>=0.63.0",
-    "aiofiles>=0.6.0",
-    "python-multipart>=0.0.5",
-    "uvicorn>=0.13.4"
+    "chardet",
+    "cython",
+    "torch",
+    "torchvision",
+    "torchtext",
+    "torchaudio",
+    "pytorch-lightning",
+    "pandas",
+    "numpy",
+    "soundfile",
+    "PyYAML",
+    "wget",
+    "fastapi",
+    "aiofiles",
+    "python-multipart",
+    "uvicorn",
 ]
 
 setuptools.setup(
