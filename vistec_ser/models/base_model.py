@@ -19,7 +19,7 @@ class BaseModel(pl.LightningModule):
         y_hat = self(x)
         loss = F.cross_entropy(y_hat, y)
         preds = torch.argmax(y_hat, dim=-1)
-        acc = FM.accuracy(preds, y, task="multiclass", num_classes=4)
+        acc = FM.accuracy(preds, y, task="multiclass", num_classes=5)
         metrics = {"train_loss": loss, "train_acc": acc}
         self.log_dict(metrics, prog_bar=True, logger=True)
         return loss
@@ -29,7 +29,7 @@ class BaseModel(pl.LightningModule):
         y_hat = self(x)
         loss = F.cross_entropy(y_hat, y)
         preds = torch.argmax(y_hat, dim=-1)
-        acc = FM.accuracy(preds, y, task="multiclass", num_classes=4)
+        acc = FM.accuracy(preds, y, task="multiclass", num_classes=5)
         metrics = {"val_acc": acc, "val_loss": loss}
         self.log_dict(metrics, prog_bar=True, logger=True)
         return metrics
@@ -56,7 +56,7 @@ class BaseSliceModel(BaseModel):
         emotion = batch[0]["emotion"]
         final_logits = torch.stack([self(chunk["feature"])[0] for chunk in batch]).mean(dim=0, keepdim=True)
         loss = F.cross_entropy(final_logits, emotion)
-        acc = FM.accuracy(final_logits.argmax(dim=-1), emotion, task='multiclass', num_classes=4)
+        acc = FM.accuracy(final_logits.argmax(dim=-1), emotion, task='multiclass', num_classes=5)
         metrics = {"val_acc": acc, "val_loss": loss}
         self.log_dict(metrics)
         return metrics
